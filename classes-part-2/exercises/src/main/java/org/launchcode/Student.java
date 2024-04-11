@@ -30,20 +30,80 @@ public class Student {
 
 
     //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+
+   public String getGradeLevel(int credits) {
+ // Determine the grade level of the student based on numberOfCredits
+
+       String studentLevel;
+        if (credits <30){
+            studentLevel = "Freshman";
+        } else if(credits <60){
+            studentLevel = "Sophmore";
+        } else if (credits <90) {
+            studentLevel = "Junior";
+        }else {
+            studentLevel = "Senior";
+        }
+
+       return  studentLevel;
+    }
 
     // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
-        // Update the appropriate fields: numberOfCredits, gpa
+
+        double totalQualityScore = this.gpa * this.numberOfCredits;
+
+        //Use the new course grade and course credits to update their total quality score.
+        totalQualityScore += courseCredits*grade;
+
+        this.gpa = totalQualityScore/this.numberOfCredits;
+
+
+
+
+
+
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
 
+
+    public String toString() {
+
+        String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name, this.getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+        return studentReport;
+    }
+
+    public boolean equals(Object toBeCompared) {
+        if (toBeCompared == this) {
+            return true;
+        }
+
+        if (toBeCompared == null) {
+            return false;
+        }
+
+        if (toBeCompared.getClass() != getClass()) {
+            return false;
+        }
+
+        Student theStudent = (Student) toBeCompared;
+        return theStudent.getStudentId() == getStudentId();
+    }
+
+
+
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+
+
+//    @Override
+//    public boolean equals(Object obj) {
+//
+//
+//        return super.equals(obj);
+//    }
 
     public String getName() {
         return name;
