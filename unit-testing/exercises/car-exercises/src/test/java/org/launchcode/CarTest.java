@@ -26,6 +26,11 @@ class CarTest {
     }
 
     //TODO: gasTankLevel is accurate after driving within tank range
+    @Test
+    public void testGasTankAfterDriving(){
+        //   test_car.drive(50);
+    }
+
     //TODO: gasTankLevel is accurate after attempting to drive past tank range
     //TODO: can't have more gas than tank size, expect an exception
 }
